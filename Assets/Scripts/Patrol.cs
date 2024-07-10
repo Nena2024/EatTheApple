@@ -15,6 +15,7 @@ public class Patrol : MonoBehaviour
     [SerializeField]
     private GameObject player;
     public GameManager gameManager;
+    private bool isNear = false;
    
 
 
@@ -47,6 +48,7 @@ public class Patrol : MonoBehaviour
             {
 
                 LookTowardPlayer();
+                isNear = true;
 
                 enemy.destination = player.transform.position;
             }
@@ -103,21 +105,18 @@ public class Patrol : MonoBehaviour
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, step, 0.0f);
         transform.rotation = Quaternion.LookRotation(newDirection);
     }
-    void OnCollisionEnter(Collider collision) // if stuck in a place 
+    void OnCollisionEnter(UnityEngine.Collision collision) // if stuck in a place 
     {
-        if (collision.CompareTag("Wall")) 
+        if (collision.gameObject.CompareTag("Wall") && isNear)
         {
+            Debug.Log("OnCollisionPlayerisNear");
 
-            if (Vector3.Distance(this.transform.position, points[currentPoint].transform.position) <= 2f)
-            {
-                GoToNext();
-            }
-            if (Vector3.Distance(this.transform.position, points[currentPoint].transform.position) > 6f)
-            {
-               
-                enemy.destination = points[currentPoint++].transform.position;
-            }
+
+            EnemyRotate();
+            enemy.destination = points[currentPoint].transform.position;
+            isNear = false;
 
         }
+
     }
 }
