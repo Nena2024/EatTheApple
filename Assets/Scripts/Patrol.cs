@@ -103,7 +103,7 @@ public class Patrol : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall") && isNear)
         {
             Debug.Log("OnCollisionPlayerisNear");
-            EnemyRotate();
+            //EnemyRotate();
             enemy.destination = points[currentPoint].transform.position;
             isNear = false;
 
