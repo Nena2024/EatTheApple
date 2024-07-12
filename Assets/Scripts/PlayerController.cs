@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     bool alreadyLeft = false;
     bool alreadyUp = false;
     bool alreadyDown = false;
+    bool alreadyWon = false;
     private int appleCounter=0;
    
 
@@ -126,6 +127,7 @@ public class PlayerController : MonoBehaviour
         //wining condition 
         if (appleCounter ==176)
         {
+            alreadyWon = true;
             gameManager.WinGame();
 
         }
@@ -134,7 +136,7 @@ public class PlayerController : MonoBehaviour
     //if the player enter the enemy's collider , the game is over  
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("enemy"))
+        if (collision.gameObject.CompareTag("enemy")&&!alreadyWon)
         {
             gameManager.GameOver();
             gameManager.isGameActive = false;
