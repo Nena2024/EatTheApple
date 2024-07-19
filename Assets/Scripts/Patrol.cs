@@ -101,6 +101,7 @@ public class Patrol : MonoBehaviour
         
 
             enemy.destination = points[points.Length-1].transform.position;
+            isNear = false;
 
         }
 

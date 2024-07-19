@@ -4,67 +4,111 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
+
 
 public class GameManager : MonoBehaviour
 {
-    private int score;
-    public TextMeshProUGUI scoreText;
+    private static GameManager _instance;
+    public static GameManager Instance => _instance;
+
+
+
     public TextMeshProUGUI winText;
     public TextMeshProUGUI gameOver;
+
     public Button restartButton;
     public bool isGameActive = true;
-    public GameObject titleScreen;
-    // Start is called before the first frame update
-    void Start()
+
+    public int MaxScore = 0;
+    private int score;
+
+    public Text BestScore;
+    public Text scoreText;
+
+    public string bestPlayer;
+
+
+
+    private void Awake()
     {
-        score = 0;
-        scoreText.text = "Score: " + score;
+        if (_instance == null)
+        {
+            _instance = this;
+            Debug.Log("GameManager instance created.");
+        }
+        else
+        {
+            Debug.LogWarning("Duplicate GameManager instance detected.");
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+
+        if (KeepName.Instance != null)
+        {
+
+            isGameActive = true;
+
+        }
     }
-    // updating score 
+    private void Update()
+    {
+        {
+            SaveDataManager.LoadScore();
+            BestScore.text = " Best Score: " + bestPlayer + " : " + MaxScore;
+        }
+    }
+    // Update is called once per frame
+
     public void UpdateScore(int scoreToAdd)
     {
+
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
+
+        if (score >= MaxScore)
+        {
+            MaxScore = score;
+            bestPlayer = KeepName.Instance.name;
+            SaveDataManager.SaveScore();
+            Debug.Log("saved");
+        }
     }
-    // setting the starting of the game 
     public void StartGame()
     {
 
+
         isGameActive = true;
-        score = 0;
-        UpdateScore(0);
-       
+
+
     }
-    // if the player loses the game 
     public void GameOver()
     {
         isGameActive = false;
         gameOver.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
-        
 
 
     }
-    //if the player loses the restart button will change the scene 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SaveDataManager.LoadScore();
+        BestScore.text = " Best Score: " + bestPlayer + " : " + MaxScore;
     }
 
     //if the player wins the game 
-     
+
     public void WinGame()
     {
         winText.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
         isGameActive = false;
-        
+
     }
-    
+
 }
