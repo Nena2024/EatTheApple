@@ -97,9 +97,7 @@ public class Patrol : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall") && isNear)
         {
-            Debug.Log("OnCollisionPlayerisNear");
-        
-
+          
             enemy.destination = points[points.Length-1].transform.position;
             isNear = false;
 
