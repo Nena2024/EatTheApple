@@ -34,7 +34,7 @@ public class Patrol : MonoBehaviour
         
         if(gameManager.isGameActive==true)
         {
-            // if the destination of the enemy and the player is less than 4 , enemy chases the player 
+            // if the destination of the enemy and the player is less than 8 , enemy chases the player 
             if (Vector3.Distance(this.transform.position, player.transform.position) <= 8f)
             {
 
@@ -43,7 +43,7 @@ public class Patrol : MonoBehaviour
 
                 enemy.destination = player.transform.position;
             }
-            // if the destination of the enemy and the player is biggar than  4 , the enemy goes to the next set point 
+            // if the destination of the enemy and the player is biggar than  8 , the enemy goes to the next set point 
             if (Vector3.Distance(this.transform.position, player.transform.position) > 8f)
             {
                

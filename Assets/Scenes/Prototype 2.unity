@@ -16050,7 +16050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalInput: 0
   verticalInput: 0
-  speed: 50
+  speed: 100
   collisionSound: {fileID: 8300000, guid: efb5f1b0875bbc7408e2352c2367f89a, type: 3}
   gameManager: {fileID: 36037130}
 --- !u!65 &1909215792

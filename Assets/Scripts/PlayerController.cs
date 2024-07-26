@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float horizontalInput;
     public float verticalInput;
-    [SerializeField] private float speed = 50.0f;
+    [SerializeField] private float speed = 100.0f;
     private Rigidbody playerRb;
     private AudioSource playerAudio;
     public AudioClip collisionSound;
