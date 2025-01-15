@@ -1,4 +1,4 @@
-    Game title: Eat The Apple
+    Game title: Eat The Apple.
     “[EAT THE APPLE] is an action maze chase game inspired by Pac-Man. (Player) controls a deer in a field.” 
 
     Platform:
