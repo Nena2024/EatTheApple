@@ -37,12 +37,12 @@
    - Time Management: Despite the limited time to complete the game, I diligently worked through tutorials and documentation to successfully integrate the features.
 
  - Sources:
-   Character Asset Source:
-   https://assetstore.unity.com/publishers/5217
-   Audio Asset Source: 
-   https://assetstore.unity.com/packages/audio/music/8bit-music-062022-225623
-   https://assetstore.unity.com/packages/audio/ambient/sci-fi/universe-sounds-free-pack-118865
+    - Character Asset Source:
+       https://assetstore.unity.com/publishers/5217
+    - Audio Asset Source: 
+       https://assetstore.unity.com/packages/audio/music/8bit-music-062022-225623
+       https://assetstore.unity.com/packages/audio/ambient/sci-fi/universe-sounds-free-pack-118865
    
  - Contact Information:
-   Email: Hengameh.ac.ir@gmail.com 
-   LinkedIn: https://www.linkedin.com/in/hengamehmadadi/
+   - Email: Hengameh.ac.ir@gmail.com 
+   - LinkedIn: https://www.linkedin.com/in/hengamehmadadi/
